@@ -1,0 +1,5 @@
+myvenv/
+*.pyc
+*.pyo
+__pycache__/
+*.sqlite3
