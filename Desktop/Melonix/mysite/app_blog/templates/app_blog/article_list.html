@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Публікації</title>
+</head>
+<body>
+    <h1>Публікації</h1>
+
+    {% if category %}
+        <h2>{{ category }}</h2>
+    {% endif %}
+
+    {% for article in articles %}
+<div>
+    <h3>
+        <a href="{% url 'article-detail' year=article.pub_date.year month=article.pub_date.month day=article.pub_date.day slug=article.slug %}">
+            {{ article.title }}
+        </a>
+    </h3>
+
+    <p>{{ article.description|truncatewords:30 }}</p>
+
+    {% if article.images.all %}
+        <img src="{{ article.images.first.image.url }}" alt="{{ article.images.first.description }}">
+    {% endif %}
+</div>
+{% endfor %}
+
+
+
+
+</body>
+</html>

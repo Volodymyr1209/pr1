@@ -13,6 +13,10 @@ class Category(models.Model):
     def __str__(self):
         return self.category
 
+    def get_absolute_url(self):
+        return reverse('category-detail', kwargs={'slug': self.slug})
+
+
 class Article(models.Model):
     title = models.CharField('Заголовок', max_length=250, help_text='Максимум 250 символів')
     description = models.TextField('Опис', blank=True)
@@ -54,3 +58,7 @@ class ArticleImage(models.Model):
     @property
     def filename(self):
         return self.image.name.rsplit('/', 1)[-1]
+
+
+
+
